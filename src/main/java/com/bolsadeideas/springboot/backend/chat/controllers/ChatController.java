@@ -26,8 +26,8 @@ public class ChatController {
     @Autowired
     private ISocioService socioService;
 
-    @MessageMapping("/mensaje")
-    @SendTo("/chat/public")
+    @MessageMapping("/mensaje-publico")
+    @SendTo("/chat/publico")
     public Mensaje recibeMensaje(Mensaje mensaje){
         Socio socioMensaje = socioService.findbyEmail(mensaje.getSocio().getEmail());
         mensaje.setFecha(LocalDateTime.now());
