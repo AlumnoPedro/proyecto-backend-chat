@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IChatDao extends MongoRepository<Mensaje, String> {
 
-    public List<Mensaje> findFirst1ByOrderByFechaDesc();
+    public List<Mensaje> findFirst5ByOrderByFechaDesc();
 
 }

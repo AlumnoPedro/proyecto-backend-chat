@@ -7,23 +7,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
-@Document(collection="socios")
-public class Socio implements Serializable {
+@Document(collection="codigoActivacion")
+public class CodigoActivacion implements Serializable {
 
     @Id
-    private Long id;
-    private String email;
-    private LocalDate fechaAlta;
-    private String nombre;
-    private String apellido;
-    private String password;
-    private Boolean admin;
-    private Boolean activo;
-
+    private int id;
+    private String codigo;
+    private LocalDate fechaCreacion;
+    private Socio socio;
 
     private static final long serialVersionUID = 1L;
 

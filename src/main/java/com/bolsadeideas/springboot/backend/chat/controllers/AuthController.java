@@ -23,7 +23,7 @@ public class AuthController {
     public String login(@RequestBody Socio socio) {
         Socio socioLogueado = socioService.verificarCredenciales(socio);
         System.out.println(socioLogueado);
-        if (socioLogueado != null) {
+        if (socioLogueado != null && socioLogueado.getActivo() == true) {
 
             String tokenJwt = jwtUtil.create(String.valueOf(socioLogueado.getId()), socioLogueado.getEmail(), socioLogueado.getAdmin());
 

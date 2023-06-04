@@ -12,12 +12,12 @@ public class ChatService implements IChatService{
     private IChatDao chatDao;
 
     @Override
-    public List<Mensaje> obtenerUltimos10Mensajes() {
-        return chatDao.findFirst1ByOrderByFechaDesc();
+    public List<Mensaje> recuperarHistorial() {
+        return chatDao.findFirst5ByOrderByFechaDesc();
     }
 
     @Override
-    public Mensaje guardar(Mensaje mensaje) {
+    public Mensaje guardarMensaje(Mensaje mensaje) {
         return chatDao.save(mensaje);
     }
 

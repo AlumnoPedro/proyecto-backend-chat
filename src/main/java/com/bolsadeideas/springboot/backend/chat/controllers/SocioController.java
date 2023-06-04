@@ -1,7 +1,9 @@
 package com.bolsadeideas.springboot.backend.chat.controllers;
 
+import com.bolsadeideas.springboot.backend.chat.entity.CodigoActivacion;
 import com.bolsadeideas.springboot.backend.chat.entity.Socio;
-import com.bolsadeideas.springboot.backend.chat.models.ISocioDao;
+import com.bolsadeideas.springboot.backend.chat.models.ICodigoActivacionService;
+import com.bolsadeideas.springboot.backend.chat.models.IEmailService;
 import com.bolsadeideas.springboot.backend.chat.models.ISocioService;
 import com.bolsadeideas.springboot.backend.chat.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
@@ -10,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +31,10 @@ public class SocioController {
 
     @Autowired
     private ISocioService socioService;
-
+    @Autowired
+    private ICodigoActivacionService codigoService;
+    @Autowired
+    private IEmailService emailService;
     @Autowired
     private JWTUtil jwtUtil;
 
@@ -58,6 +63,14 @@ public class SocioController {
                 socio.setPassword(hash);
                 socio.setFechaAlta(LocalDate.now());
                 socio.setAdmin(false);
+                socio.setActivo(false);
+                CodigoActivacion codigoActivacion = new CodigoActivacion();
+                codigoActivacion.setSocio(socio);
+                codigoActivacion.setId(LocalDateTime.now().getNano());
+                codigoActivacion.setCodigo("codigodeejemplo");
+                codigoActivacion.setFechaCreacion(LocalDate.now());
+                emailService.enviarEmail(codigoActivacion);
+                codigoService.guardarCodigo(codigoActivacion);
                 socioService.save(socio);
             } catch (DataAccessException e) {
                 response.put("mensaje", "Error al realizar la insercion a base de datos");
@@ -74,6 +87,19 @@ public class SocioController {
 
     }
 
-
+    @GetMapping("/verificacion")
+    public String activarSocio(@RequestParam("codigo") String codigo){
+        System.out.println(codigo);
+        CodigoActivacion codigoActivacion = codigoService.findByCodigo(codigo);
+        if(codigoActivacion == null){
+            return "Codigo de Activacion no valido";
+        } else {
+            System.out.println(codigoActivacion.getSocio());
+            codigoActivacion.getSocio().setActivo(true);
+            System.out.println(codigoActivacion.getSocio());
+            socioService.save(codigoActivacion.getSocio());
+            return "Cuenta Activada";
+        }
+    }
 
 }

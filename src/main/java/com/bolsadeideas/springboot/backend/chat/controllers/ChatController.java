@@ -29,36 +29,36 @@ public class ChatController {
     @MessageMapping("/mensaje-publico")
     @SendTo("/chat/publico")
     public Mensaje recibeMensaje(Mensaje mensaje){
+        //Rellenar informacion del socio emisor
         Socio socioMensaje = socioService.findbyEmail(mensaje.getSocio().getEmail());
         mensaje.setFecha(LocalDateTime.now());
         mensaje.setSocio(socioMensaje);
-        System.out.println(mensaje);
-        chatService.guardar(mensaje);
+        //Guardar mensaje en MongoDB
+        chatService.guardarMensaje(mensaje);
         return mensaje;
     }
 
     @MessageMapping("/mensaje-privado")
     public Mensaje privMensaje(Mensaje mensaje){
+        //Rellenar informacion del socio emisor
         Socio socioMensaje = socioService.findbyEmail(mensaje.getSocio().getEmail());
         mensaje.setFecha(LocalDateTime.now());
         mensaje.setSocio(socioMensaje);
+        //Rellenar informacion del socio receptor
         Socio socioReceptor = socioService.findbyEmail(mensaje.getReceptor().getEmail());
         mensaje.setReceptor(socioReceptor);
+        //Guardar mensaje en MongoDB
+        chatService.guardarMensaje(mensaje);
+        //Enviar mensaje al receptor en concreto
         simpMessagingTemplate.convertAndSend("/chat/"+mensaje.getReceptor().getEmail()+"/private",mensaje);
 
         return mensaje;
     }
 
-    @MessageMapping("/escribiendo")
-    @SendTo("/chat/escribiendo")
-    public Socio estaEscribiendo(Socio socio){
-        Socio socioMensaje = socioService.findbyEmail(socio.getEmail());
-        return socioMensaje;
-    }
-
     @MessageMapping("/historial")
     public void historial(String email) {
-        simpMessagingTemplate.convertAndSend("/chat/historial/" + email, chatService.obtenerUltimos10Mensajes());
+        //Enviar lista de mensajes al socio conectado en concreto
+        simpMessagingTemplate.convertAndSend("/chat/historial/" + email, chatService.recuperarHistorial());
     }
 
 }

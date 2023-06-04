@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IChatService {
 
-    List<Mensaje> obtenerUltimos10Mensajes();
-    Mensaje guardar(Mensaje mensaje);
+    List<Mensaje> recuperarHistorial();
+    Mensaje guardarMensaje(Mensaje mensaje);
 
 }
