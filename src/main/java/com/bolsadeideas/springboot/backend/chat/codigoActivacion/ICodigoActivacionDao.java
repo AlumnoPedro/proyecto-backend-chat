@@ -1,7 +1,7 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.codigoActivacion;
 
-import com.bolsadeideas.springboot.backend.chat.entity.CodigoActivacion;
-import com.bolsadeideas.springboot.backend.chat.entity.Socio;
+import com.bolsadeideas.springboot.backend.chat.codigoActivacion.CodigoActivacion;
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ICodigoActivacionDao extends MongoRepository<CodigoActivacion, Integer> {

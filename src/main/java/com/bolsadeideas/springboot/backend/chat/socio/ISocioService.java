@@ -1,7 +1,6 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.socio;
 
-import com.bolsadeideas.springboot.backend.chat.entity.Socio;
-import org.springframework.transaction.annotation.Transactional;
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
 
 import java.util.List;
 

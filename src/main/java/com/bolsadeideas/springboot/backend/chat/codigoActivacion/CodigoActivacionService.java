@@ -1,6 +1,5 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.codigoActivacion;
 
-import com.bolsadeideas.springboot.backend.chat.entity.CodigoActivacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

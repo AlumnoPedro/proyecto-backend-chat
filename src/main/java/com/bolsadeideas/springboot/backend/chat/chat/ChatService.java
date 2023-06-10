@@ -1,12 +1,11 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.chat;
 
-import com.bolsadeideas.springboot.backend.chat.entity.Mensaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class ChatService implements IChatService{
+public class ChatService implements IChatService {
 
     @Autowired
     private IChatDao chatDao;

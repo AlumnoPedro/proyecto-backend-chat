@@ -1,6 +1,6 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.chat;
 
-import com.bolsadeideas.springboot.backend.chat.entity.Mensaje;
+import com.bolsadeideas.springboot.backend.chat.chat.Mensaje;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

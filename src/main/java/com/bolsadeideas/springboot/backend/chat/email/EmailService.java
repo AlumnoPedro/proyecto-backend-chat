@@ -1,15 +1,14 @@
-package com.bolsadeideas.springboot.backend.chat.models;
+package com.bolsadeideas.springboot.backend.chat.email;
 
-import com.bolsadeideas.springboot.backend.chat.entity.CodigoActivacion;
+import com.bolsadeideas.springboot.backend.chat.codigoActivacion.CodigoActivacion;
+import com.bolsadeideas.springboot.backend.chat.codigoActivacion.ICodigoActivacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailService implements IEmailService{
+public class EmailService implements IEmailService {
 
     @Autowired
     private ICodigoActivacionService codigoActivacionService;

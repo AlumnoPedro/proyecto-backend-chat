@@ -1,8 +1,8 @@
 package com.bolsadeideas.springboot.backend.chat.controllers;
 
-import com.bolsadeideas.springboot.backend.chat.entity.Socio;
-import com.bolsadeideas.springboot.backend.chat.models.ISocioDao;
-import com.bolsadeideas.springboot.backend.chat.models.ISocioService;
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
+import com.bolsadeideas.springboot.backend.chat.socio.ISocioDao;
+import com.bolsadeideas.springboot.backend.chat.socio.ISocioService;
 import com.bolsadeideas.springboot.backend.chat.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

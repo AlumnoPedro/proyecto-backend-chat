@@ -1,9 +1,9 @@
 package com.bolsadeideas.springboot.backend.chat.controllers;
 
-import com.bolsadeideas.springboot.backend.chat.entity.Mensaje;
-import com.bolsadeideas.springboot.backend.chat.entity.Socio;
-import com.bolsadeideas.springboot.backend.chat.models.IChatService;
-import com.bolsadeideas.springboot.backend.chat.models.ISocioService;
+import com.bolsadeideas.springboot.backend.chat.chat.Mensaje;
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
+import com.bolsadeideas.springboot.backend.chat.chat.IChatService;
+import com.bolsadeideas.springboot.backend.chat.socio.ISocioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;

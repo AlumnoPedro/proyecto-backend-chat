@@ -1,10 +1,10 @@
 package com.bolsadeideas.springboot.backend.chat.controllers;
 
-import com.bolsadeideas.springboot.backend.chat.entity.CodigoActivacion;
-import com.bolsadeideas.springboot.backend.chat.entity.Socio;
-import com.bolsadeideas.springboot.backend.chat.models.ICodigoActivacionService;
-import com.bolsadeideas.springboot.backend.chat.models.IEmailService;
-import com.bolsadeideas.springboot.backend.chat.models.ISocioService;
+import com.bolsadeideas.springboot.backend.chat.codigoActivacion.CodigoActivacion;
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
+import com.bolsadeideas.springboot.backend.chat.codigoActivacion.ICodigoActivacionService;
+import com.bolsadeideas.springboot.backend.chat.email.IEmailService;
+import com.bolsadeideas.springboot.backend.chat.socio.ISocioService;
 import com.bolsadeideas.springboot.backend.chat.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;

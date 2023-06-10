@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.backend.chat.entity;
+package com.bolsadeideas.springboot.backend.chat.socio;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

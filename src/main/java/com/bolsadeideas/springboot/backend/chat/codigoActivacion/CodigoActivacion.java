@@ -1,5 +1,6 @@
-package com.bolsadeideas.springboot.backend.chat.entity;
+package com.bolsadeideas.springboot.backend.chat.codigoActivacion;
 
+import com.bolsadeideas.springboot.backend.chat.socio.Socio;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
