@@ -28,7 +28,7 @@ public class ChatController {
 
     @MessageMapping("/mensaje-publico")
     @SendTo("/chat/publico")
-    public Mensaje recibeMensaje(Mensaje mensaje){
+    public Mensaje pubMensaje(Mensaje mensaje){
         //Rellenar informacion del socio emisor
         Socio socioMensaje = socioService.findbyEmail(mensaje.getSocio().getEmail());
         mensaje.setFecha(LocalDateTime.now());
@@ -56,7 +56,7 @@ public class ChatController {
     }
 
     @MessageMapping("/historial")
-    public void historial(String email) {
+    public void historialMensajes(String email) {
         //Enviar lista de mensajes al socio conectado en concreto
         simpMessagingTemplate.convertAndSend("/chat/historial/" + email, chatService.recuperarHistorial());
     }
